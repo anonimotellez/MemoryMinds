@@ -3,9 +3,9 @@
 Juego de Memorama desarrollado en JavaFX.
 
 Integrantes:
-- Juan
-- Pedro
-- Neider
+- Cristian Gaviria
+- Jhoan Carrasca
+- Neider Tellez
 
 Tecnologías:
 - Java 21
