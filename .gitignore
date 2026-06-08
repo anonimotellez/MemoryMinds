@@ -1,6 +1,8 @@
 # Compiled output
 target/
-*.class
+.class
+.idea/
+.vscode/
 
 # IDEs
 .idea/
