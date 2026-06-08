@@ -1,25 +1,29 @@
 package com.example.app;
 
-import com.example.view.StartView;
+import com.example.model.ScoreEntry;
+import com.example.view.ScoreView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.util.List;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
+        ScoreView view = new ScoreView();
 
-        StartView startView = new StartView();
+        // Datos de ejemplo — tu compañero reemplaza esto con los datos reales del juego
+        ScoreEntry partida = new ScoreEntry("Jugador1", 78, 12, 8, 195, "Ciencias");
+        view.showResults(partida, List.of(partida));
 
-        startView.getStartButton().setOnAction(e -> {
-            System.out.println("Comenzar");
-        });
+        // Conectar con las otras pantallas del juego
+        view.getPlayAgainButton() .setOnAction(e -> System.out.println("→ Nueva partida"));
+        view.getBackToMenuButton().setOnAction(e -> System.out.println("→ Menú principal"));
 
-        Scene scene = new Scene(startView, 800, 600);
-
-        stage.setTitle("Game");
-        stage.setScene(scene);
+        stage.setTitle("Memory Minds — Puntuaciones");
+        stage.setScene(new Scene(view, 800, 640));
+        stage.setResizable(false);
         stage.show();
     }
 
