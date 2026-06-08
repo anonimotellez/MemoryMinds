@@ -1,0 +1,58 @@
+.root {
+    -fx-font-family: "Segoe UI";
+}
+
+.game-view {
+    -fx-background-color: radial-gradient(center 50% 40%, radius 75%, #14213d, #07111f);
+}
+
+.game-board {
+    -fx-alignment: center;
+}
+
+.card-view {
+    -fx-alignment: center;
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
+    -fx-border-width: 2;
+    -fx-background-insets: 0;
+}
+
+.card-view.hidden {
+    -fx-background-color: linear-gradient(to bottom right, #1e2a4a, #0c1222);
+    -fx-border-color: linear-gradient(to bottom right, #ffd36b, #8c5c00);
+}
+
+.card-view.revealed {
+    -fx-background-color: linear-gradient(to bottom right, #f7e7b5, #d8b35a);
+    -fx-border-color: #6d4c1f;
+}
+
+.return-button {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ff6f61 0%, #d84315 100%);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-width: 0;
+}
+
+.return-button:hover {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ff8a78 0%, #e25a2b 100%);
+}
+
+.card-label {
+    -fx-font-weight: bold;
+    -fx-font-family: "System";
+}
+
+.card-label.hidden {
+    -fx-text-fill: white;
+    -fx-font-size: 36px;
+}
+
+.card-label.revealed {
+    -fx-text-fill: #1a1a1a;
+    -fx-font-size: 34px;
+}

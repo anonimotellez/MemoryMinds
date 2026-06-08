@@ -1,5 +1,7 @@
 package com.example.view;
 
+import com.example.app.Main;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,7 +12,7 @@ public class StartView extends VBox {
     private Button startButton;
     private Button optionsButton;
 
-    public StartView() {
+    public StartView(Main app) {
 
         setAlignment(Pos.CENTER);
         setSpacing(20);
@@ -18,20 +20,14 @@ public class StartView extends VBox {
         Label title = new Label("Game Title");
 
         startButton = new Button("Comenzar");
+        startButton.setOnAction(e -> {
+            app.showGameView();
+        });
         optionsButton = new Button("Opciones");
 
         getChildren().addAll(
                 title,
                 startButton,
-                optionsButton
-        );
-    }
-
-    public Button getStartButton() {
-        return startButton;
-    }
-
-    public Button getOptionsButton() {
-        return optionsButton;
+                optionsButton);
     }
 }
