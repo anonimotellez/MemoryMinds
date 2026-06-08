@@ -1,0 +1,18 @@
+# Compiled output
+target/
+*.class
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Maven / build leftovers
+.mvn/wrapper/maven-wrapper.jar
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
