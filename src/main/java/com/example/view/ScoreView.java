@@ -26,14 +26,6 @@ import java.util.function.Function;
  */
 public final class ScoreView extends StackPane {
 
-    // Paleta de colores Memory Minds
-    private static final String CYAN = "#00d4ff";
-    private static final String GREEN = "#27ae60";
-    private static final String MUTED = "rgba(255,255,255,0.55)";
-    private static final String CARD_BG = "rgba(255,255,255,0.06)";
-    private static final String BORDER = "rgba(0,212,255,0.25)";
-    private static final String ROW_HL = "rgba(0,212,255,0.18)";
-
     // Labels que se actualizan con showResults()
     private Label titleLabel;
     private Label modeLabel;
@@ -49,9 +41,9 @@ public final class ScoreView extends StackPane {
     private final Button backToMenuButton = createOutlineButton("⌂   Salir al Menú");
 
     public ScoreView(Main app) {
-        setStyle("-fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);");
+        getStyleClass().add("score-view");
         setPrefSize(800, 640);
-        getStylesheets().add(getClass().getResource("/com/example/score.css").toExternalForm());
+        getStylesheets().add(getClass().getResource("/styles/score.css").toExternalForm());
 
         VBox content = new VBox(24,
                 buildHeader(),
@@ -60,13 +52,11 @@ public final class ScoreView extends StackPane {
                 buildButtons());
         content.setPadding(new Insets(32, 48, 32, 48));
         content.setAlignment(Pos.TOP_CENTER);
-        content.setStyle("-fx-background-color: transparent;");
+        content.getStyleClass().add("score-content");
 
         ScrollPane scroll = new ScrollPane(content);
         scroll.getStyleClass().add("score-scroll");
         scroll.setFitToWidth(true);
-        scroll.setStyle(
-                "-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;");
         scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         playAgainButton.setOnAction(e -> {
@@ -93,7 +83,8 @@ public final class ScoreView extends StackPane {
 
         boolean victory = current.score() >= 70;
         titleLabel.setText(victory ? "🏆  ¡VICTORIA!" : "💪  ¡BIEN HECHO!");
-        titleLabel.setStyle(titleStyle(victory ? CYAN : "#f0c040"));
+        titleLabel.getStyleClass().removeAll("victory", "good-effort");
+        titleLabel.getStyleClass().add(victory ? "victory" : "good-effort");
 
         modeLabel.setText("Modo: " + current.gameMode());
         scoreLabel.setText(String.valueOf(current.score()));
@@ -108,17 +99,13 @@ public final class ScoreView extends StackPane {
 
     private VBox buildHeader() {
         titleLabel = new Label("🏆  ¡VICTORIA!");
-        titleLabel.setStyle(titleStyle(CYAN));
+        titleLabel.getStyleClass().addAll("score-title", "victory");
 
         Label subtitle = new Label("Memory Minds  ·  Resultados de tu partida");
-        subtitle.setStyle("-fx-font-size: 13px; -fx-text-fill: " + MUTED + ";");
+        subtitle.getStyleClass().add("score-subtitle");
 
         modeLabel = new Label("Modo: —");
-        modeLabel.setStyle(
-                "-fx-font-size: 12px; -fx-text-fill: " + CYAN + ";" +
-                        "-fx-background-color: rgba(0,212,255,0.10); -fx-background-radius: 20;" +
-                        "-fx-padding: 4 16 4 16; -fx-border-color: " + CYAN + ";" +
-                        "-fx-border-radius: 20; -fx-border-width: 1;");
+        modeLabel.getStyleClass().add("score-mode-pill");
 
         VBox header = new VBox(10, titleLabel, subtitle, modeLabel);
         header.setAlignment(Pos.CENTER);
@@ -126,10 +113,14 @@ public final class ScoreView extends StackPane {
     }
 
     private HBox buildStatsCards() {
-        scoreLabel = valueLabel("—", CYAN, 38);
-        timeLabel = valueLabel("00:00", "#ffffff", 28);
-        attemptsLabel = valueLabel("—", "#ffffff", 28);
-        efficiencyLabel = valueLabel("—%", GREEN, 28);
+        scoreLabel = valueLabel("—");
+        scoreLabel.getStyleClass().add("score-value-score");
+
+        timeLabel = valueLabel("00:00");
+        attemptsLabel = valueLabel("—");
+
+        efficiencyLabel = valueLabel("—%");
+        efficiencyLabel.getStyleClass().add("score-value-efficiency");
 
         HBox row = new HBox(16,
                 card("PUNTUACIÓN", scoreLabel, true),
@@ -142,7 +133,7 @@ public final class ScoreView extends StackPane {
 
     private VBox buildLeaderboard() {
         Label sectionTitle = new Label("MEJORES PUNTUACIONES");
-        sectionTitle.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: " + MUTED + ";");
+        sectionTitle.getStyleClass().add("score-section-title");
 
         table = buildTable();
 
@@ -169,7 +160,7 @@ public final class ScoreView extends StackPane {
         t.setSelectionModel(null);
 
         Label placeholder = new Label("Sin partidas aún. ¡Sé el primero!");
-        placeholder.setStyle("-fx-text-fill: " + MUTED + "; -fx-font-size: 14px;");
+        placeholder.getStyleClass().add("score-placeholder");
         t.setPlaceholder(placeholder);
 
         t.getColumns().addAll(
@@ -184,9 +175,10 @@ public final class ScoreView extends StackPane {
             @Override
             protected void updateItem(ScoreEntry item, boolean empty) {
                 super.updateItem(item, empty);
-                setStyle(!empty && item == currentEntry
-                        ? "-fx-background-color: " + ROW_HL + "; -fx-background-radius: 6;"
-                        : "");
+                getStyleClass().remove("current-score-row");
+                if (!empty && item == currentEntry) {
+                    getStyleClass().add("current-score-row");
+                }
             }
         });
 
@@ -226,64 +218,34 @@ public final class ScoreView extends StackPane {
 
     private static VBox card(String title, Label value, boolean primary) {
         Label lbl = new Label(title);
-        lbl.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: " + MUTED + ";");
+        lbl.getStyleClass().add("score-card-title");
 
         VBox c = new VBox(6, lbl, value);
         c.setAlignment(Pos.CENTER);
         c.setPadding(new Insets(18, 24, 18, 24));
         c.setMinWidth(primary ? 160 : 130);
-        c.setStyle(
-                "-fx-background-color: " + CARD_BG + "; -fx-background-radius: 14;" +
-                        "-fx-border-color: " + BORDER + "; -fx-border-radius: 14; -fx-border-width: 1;" +
-                        (primary ? "-fx-effect: dropshadow(gaussian, rgba(0,212,255,0.22), 16, 0, 0, 0);" : ""));
+        c.getStyleClass().add("score-card");
+        if (primary) {
+            c.getStyleClass().add("score-card-primary");
+        }
         return c;
     }
 
-    private static Label valueLabel(String text, String color, int size) {
+    private static Label valueLabel(String text) {
         Label l = new Label(text);
-        l.setStyle("-fx-font-size: " + size + "px; -fx-font-weight: bold; -fx-text-fill: " + color + ";");
+        l.getStyleClass().add("score-value");
         return l;
     }
 
-    private static String titleStyle(String color) {
-        return "-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: " + color + ";" +
-                "-fx-effect: dropshadow(gaussian, " + color + ", 12, 0.6, 0, 0);";
-    }
-
     private static Button createPrimaryButton(String text) {
-        String base = "-fx-background-color:#00d4ff;-fx-text-fill:#0d1117;-fx-font-size:14px;" +
-                "-fx-font-weight:bold;-fx-background-radius:10;-fx-cursor:hand;" +
-                "-fx-pref-width:210;-fx-pref-height:46;" +
-                "-fx-effect:dropshadow(gaussian,rgba(0,212,255,0.4),10,0,0,4);";
-        String hover = base.replace("#00d4ff", "#33dfff");
         Button b = new Button(text);
-        b.setStyle(base);
-        b.setOnMouseEntered(e -> b.setStyle(hover));
-        b.setOnMouseExited(e -> b.setStyle(base));
+        b.getStyleClass().add("score-btn-primary");
         return b;
     }
 
     private static Button createOutlineButton(String text) {
-        String base = "-fx-background-color:transparent;-fx-text-fill:#00d4ff;-fx-font-size:14px;" +
-                "-fx-font-weight:bold;-fx-border-color:#00d4ff;-fx-border-radius:10;" +
-                "-fx-background-radius:10;-fx-border-width:1.5;-fx-cursor:hand;" +
-                "-fx-pref-width:210;-fx-pref-height:46;";
-        String hover = "-fx-background-color:rgba(0,212,255,0.10);-fx-text-fill:#00d4ff;" +
-                "-fx-font-size:14px;-fx-font-weight:bold;-fx-border-color:#00d4ff;" +
-                "-fx-border-radius:10;-fx-background-radius:10;-fx-border-width:1.5;" +
-                "-fx-cursor:hand;-fx-pref-width:210;-fx-pref-height:46;";
         Button b = new Button(text);
-        b.setStyle(base);
-        b.setOnMouseEntered(e -> b.setStyle(hover));
-        b.setOnMouseExited(e -> b.setStyle(base));
+        b.getStyleClass().add("score-btn-outline");
         return b;
-    }
-
-    public Button getPlayAgainButton() {
-        return playAgainButton;
-    }
-
-    public Button getBackToMenuButton() {
-        return backToMenuButton;
     }
 }

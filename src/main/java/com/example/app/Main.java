@@ -58,7 +58,7 @@ public class Main extends Application {
 
     private void applyStyles(Scene scene) {
         scene.getStylesheets().add(
-                getClass().getResource("/styles/style.css").toExternalForm());
+                getClass().getResource("/styles/game.css").toExternalForm());
     }
 
     public static void main(String[] args) {
