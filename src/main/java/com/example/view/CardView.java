@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 public class CardView extends StackPane {
 
-    private boolean flipped = false;
+    private boolean isFlipped = false;
     private final Label label;
     private final DropShadow shadow;
     private static final double WIDTH = 90;
@@ -35,15 +35,13 @@ public class CardView extends StackPane {
         getChildren().add(label);
 
         setOnMouseClicked(event -> {
-            flipped = !flipped;
             updateVisualState(text);
         });
     }
 
     private void updateVisualState(String text) {
-
-        if (flipped) {
-
+        isFlipped = !isFlipped;
+        if (isFlipped) {
             label.setText(text);
             getStyleClass().removeAll("hidden", "revealed");
             getStyleClass().add("revealed");
