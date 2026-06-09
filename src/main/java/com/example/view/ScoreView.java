@@ -42,8 +42,6 @@ public final class ScoreView extends StackPane {
 
     public ScoreView(Main app) {
         getStyleClass().add("score-view");
-        setPrefSize(800, 640);
-        getStylesheets().add(getClass().getResource("/styles/score.css").toExternalForm());
 
         VBox content = new VBox(24,
                 buildHeader(),

@@ -26,7 +26,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(view, 800, 600);
 
-        applyStyles(scene);
+        ///applyStylesStart(scene);
 
         stage.setScene(scene);
     }
@@ -37,7 +37,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(view, 800, 600);
 
-        applyStyles(scene);
+        applyStylesGame(scene);
 
         stage.setScene(scene);
     }
@@ -50,15 +50,20 @@ public class Main extends Application {
         view.showResults(partida, List.of(partida));
 
         stage.setTitle("Memory Minds — Puntuaciones");
-        Scene scene = new Scene(view, 800, 640);
-        applyStyles(scene);
+        Scene scene = new Scene(view, 800, 600);
+        applyStylesScore(scene);
         stage.setScene(scene);
         stage.setResizable(false);
     }
 
-    private void applyStyles(Scene scene) {
+    private void applyStylesGame(Scene scene) {
         scene.getStylesheets().add(
                 getClass().getResource("/styles/game.css").toExternalForm());
+    }
+
+    private void applyStylesScore(Scene scene) {
+        scene.getStylesheets().add(
+                getClass().getResource("/styles/score.css").toExternalForm());
     }
 
     public static void main(String[] args) {
