@@ -23,7 +23,7 @@ public class GameView extends StackPane {
         board.setAlignment(Pos.CENTER);
         board.getStyleClass().add("game-board");
 
-        returnButton = new Button("Regresar");
+        returnButton = new Button("Volver al menú");
         returnButton.setOnAction(e -> {
             app.showStartView();
         });

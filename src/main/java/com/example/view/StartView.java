@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 public class StartView extends VBox {
 
     private Button startButton;
-    private Button optionsButton;
+    private Button scoreButton;
 
     public StartView(Main app) {
 
@@ -23,11 +23,14 @@ public class StartView extends VBox {
         startButton.setOnAction(e -> {
             app.showGameView();
         });
-        optionsButton = new Button("Opciones");
+        scoreButton = new Button("Puntuaciones");
+        scoreButton.setOnAction(e -> {
+            app.showScoreView();
+        });
 
         getChildren().addAll(
                 title,
                 startButton,
-                optionsButton);
+                scoreButton);
     }
 }
