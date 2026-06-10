@@ -1,0 +1,98 @@
+.root {
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
+.start-view {
+    -fx-background-color: radial-gradient(center 50% 40%, radius 85%, #132033, #09111e);
+}
+
+.start-content {
+    -fx-background-color: transparent;
+}
+
+.start-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.25), 16, 0.5, 0, 0);
+}
+
+.start-subtitle {
+    -fx-text-fill: rgba(255, 255, 255, 0.72);
+    -fx-font-size: 14px;
+}
+
+.category-row {
+    -fx-padding: 10 0 8 0;
+}
+
+.menu-button {
+    -fx-background-radius: 26;
+    -fx-border-radius: 26;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+
+.category-button {
+    -fx-alignment: center;
+    -fx-padding: 18;
+    -fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    -fx-border-color: rgba(255, 255, 255, 0.10);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 18, 0.18, 0, 8);
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+}
+
+.category-button:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-border-color: rgba(255, 255, 255, 0.18);
+}
+
+.category-math {
+    -fx-background-color: linear-gradient(to bottom right, #2ecc71, #1f8b4c);
+}
+
+.category-science {
+    -fx-background-color: linear-gradient(to bottom right, #3498db, #1e6290);
+}
+
+.category-history {
+    -fx-background-color: linear-gradient(to bottom right, #9b59b6, #5d3a73);
+}
+
+.category-title {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.category-hint {
+    -fx-text-fill: rgba(255, 255, 255, 0.95);
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.control-row {
+    -fx-padding: 22 0 0 0;
+}
+
+.control-button {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+.control-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-border-color: rgba(255, 255, 255, 0.24);
+}
