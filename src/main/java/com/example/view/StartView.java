@@ -1,6 +1,8 @@
 package com.example.view;
 
 import com.example.app.Main;
+import com.example.model.Card;
+import com.example.model.Deck;
 
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -12,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 public class StartView extends StackPane {
 
@@ -34,9 +38,9 @@ public class StartView extends StackPane {
         subtitle.getStyleClass().add("start-subtitle");
 
         HBox categories = new HBox(28,
-                createCategoryButton("Matemáticas", "[ START ]", "category-math", app::showGameView),
-                createCategoryButton("Ciencia", "[ START ]", "category-science", app::showGameView),
-                createCategoryButton("Historia", "[ START ]", "category-history", app::showGameView));
+                createCategoryButton("Matemáticas", "[ START ]", "category-math", app, Deck.createMathDeck()),
+                createCategoryButton("Ciencia", "[ START ]", "category-science", app, Deck.createScienceDeck()),
+                createCategoryButton("English", "[ START ]", "category-english", app, Deck.createSEnglishDeck()));
         categories.setAlignment(Pos.CENTER);
         categories.getStyleClass().add("category-row");
 
@@ -53,7 +57,7 @@ public class StartView extends StackPane {
         getChildren().add(content);
     }
 
-    private Button createCategoryButton(String titleText, String hintText, String styleClass, Runnable action) {
+    private Button createCategoryButton(String titleText, String hintText, String styleClass, Main app, List<Card> cards) {
         Label title = new Label(titleText);
         title.getStyleClass().add("category-title");
 
@@ -69,7 +73,7 @@ public class StartView extends StackPane {
         button.getStyleClass().addAll("menu-button", styleClass);
         button.setMinSize(240, 260);
         button.setMaxSize(240, 260);
-        button.setOnAction(e -> action.run());
+        button.setOnAction(e -> app.showGameView(cards));
         return button;
     }
 

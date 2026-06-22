@@ -60,8 +60,8 @@
     -fx-background-color: linear-gradient(to bottom right, #3498db, #1e6290);
 }
 
-.category-history {
-    -fx-background-color: linear-gradient(to bottom right, #9b59b6, #5d3a73);
+.category-english {
+    -fx-background-color: linear-gradient(to bottom right, #b6b559, #b3710e);
 }
 
 .category-title {

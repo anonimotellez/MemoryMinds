@@ -1,5 +1,6 @@
 package com.example.app;
 
+import com.example.model.Card;
 import com.example.model.ScoreEntry;
 import com.example.view.GameView;
 import com.example.view.ScoreView;
@@ -34,9 +35,9 @@ public class Main extends Application {
         stage.setTitle("Memory Minds - Inicio");
     }
 
-    public void showGameView() {
+    public void showGameView( List<Card> cards) {
 
-        GameView view = new GameView(this);
+        GameView view = new GameView(this, cards);
 
         Scene scene = new Scene(view, width, height);
 

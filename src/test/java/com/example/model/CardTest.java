@@ -8,15 +8,15 @@ public class CardTest {
 
     @Test
     public void constructorAndGetters() {
-        Card c = new Card("img.png");
-        assertEquals("img.png", c.getImagePath());
+        Card c = new Card("cat");
+        assertEquals("cat", c.getTextDisplay());
         assertFalse(c.isFlipped());
         assertFalse(c.isMatched());
     }
 
     @Test
     public void setFlippedAndMatched() {
-        Card c = new Card("img.png");
+        Card c = new Card("cat");
         c.setFlipped(true);
         assertTrue(c.isFlipped());
 
@@ -25,5 +25,12 @@ public class CardTest {
 
         c.setFlipped(false);
         assertFalse(c.isFlipped());
+    }
+
+    @Test
+    public void constructorWithId() {
+        Card c = new Card("cat", "id123");
+        assertEquals("cat", c.getTextDisplay());
+        assertEquals("id123", c.getId());
     }
 }

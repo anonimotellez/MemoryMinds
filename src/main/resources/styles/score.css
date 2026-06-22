@@ -4,6 +4,11 @@
    ========================================================= */
 
 /* ── Contenedor general ──────────────────────────────────── */
+
+.root {
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
 .score-view {
     -fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);
 }
@@ -96,7 +101,6 @@
 }
 
 /* ── Botones de accion ─────────────────────────────────── */
-.score-btn-primary,
 .score-btn-outline {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
@@ -104,16 +108,6 @@
     -fx-cursor: hand;
     -fx-pref-width: 210;
     -fx-pref-height: 46;
-}
-
-.score-btn-primary {
-    -fx-background-color: #00d4ff;
-    -fx-text-fill: #0d1117;
-    -fx-effect: dropshadow(gaussian, rgba(0,212,255,0.4), 10, 0, 0, 4);
-}
-
-.score-btn-primary:hover {
-    -fx-background-color: #33dfff;
 }
 
 .score-btn-outline {

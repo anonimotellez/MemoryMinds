@@ -3,14 +3,14 @@ package com.example.model;
 /**
  * Represents a single card used in the memory game.
  * <p>
- * A card holds the path to its image and two state flags: whether it is
+ * A card holds the text to display on its face and two state flags: whether it is
  * currently flipped (face-up) and whether it has been matched with its pair.
  * </p>
  */
 public class Card {
 
-    /** Path to the image resource shown on the card face. */
-    private String imagePath;
+    /** Text displayed on the card face. */
+    private String textDisplay;
 
     /** True when the card is currently revealed (face-up). */
     private boolean flipped;
@@ -18,25 +18,49 @@ public class Card {
     /** True when the card has been matched and should remain revealed. */
     private boolean matched;
 
+    /** Unique identifier for the card. */
+    private String id;
+
     /**
-     * Creates a new card with the given image path. The card is
+     * Creates a new card with the given text. The card is
      * initially not flipped and not matched.
      *
-     * @param imagePath the path to the image resource for this card
+     * @param textDisplay the text to display on the card face
+     * @param id the unique identifier for the card
      */
-    public Card(String imagePath) {
-        this.imagePath = imagePath;
+    public Card(String textDisplay, String id) {
+        this.textDisplay = textDisplay;
+        this.id = id;
         this.flipped = false;
         this.matched = false;
     }
 
     /**
-     * Returns the image path associated with this card.
+     * Creates a new card using the same value for text and id.
+     * This is convenient when the visible symbol also identifies the pair.
      *
-     * @return the image resource path
+     * @param textDisplay the text to display on the card face and the pair id
      */
-    public String getImagePath() {
-        return imagePath;
+    public Card(String textDisplay) {
+        this(textDisplay, textDisplay);
+    }
+
+    /**
+     * Returns the text to display on the card face.
+     *
+     * @return the text to display on the card face
+     */
+    public String getTextDisplay() {
+        return textDisplay;
+    }
+
+    /**
+     * Returns the unique identifier for the card.
+     *
+     * @return the unique identifier for the card
+     */
+    public String getId() {
+        return id;
     }
 
     /**

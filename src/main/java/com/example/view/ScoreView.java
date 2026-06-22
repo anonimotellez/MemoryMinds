@@ -36,8 +36,6 @@ public final class ScoreView extends StackPane {
 
     private TableView<ScoreEntry> table;
     private ScoreEntry currentEntry;
-
-    private final Button playAgainButton = createPrimaryButton("▶   Volver a Jugar");
     private final Button backToMenuButton = createOutlineButton("⌂   Salir al Menú");
 
     public ScoreView(Main app) {
@@ -56,10 +54,6 @@ public final class ScoreView extends StackPane {
         scroll.getStyleClass().add("score-scroll");
         scroll.setFitToWidth(true);
         scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
-        playAgainButton.setOnAction(e -> {
-            app.showGameView();
-        });
         backToMenuButton.setOnAction(e -> {
             app.showStartView();
         });
@@ -141,7 +135,7 @@ public final class ScoreView extends StackPane {
     }
 
     private HBox buildButtons() {
-        HBox box = new HBox(20, playAgainButton, backToMenuButton);
+        HBox box = new HBox(20, backToMenuButton);
         box.setAlignment(Pos.CENTER);
         VBox.setMargin(box, new Insets(8, 0, 0, 0));
         return box;
@@ -233,12 +227,6 @@ public final class ScoreView extends StackPane {
         Label l = new Label(text);
         l.getStyleClass().add("score-value");
         return l;
-    }
-
-    private static Button createPrimaryButton(String text) {
-        Button b = new Button(text);
-        b.getStyleClass().add("score-btn-primary");
-        return b;
     }
 
     private static Button createOutlineButton(String text) {

@@ -1,7 +1,6 @@
 .root {
-    -fx-font-family: "Segoe UI";
+    -fx-font-family: "Segoe UI", "Arial";
 }
-
 .game-view {
     -fx-background-color: radial-gradient(center 50% 40%, radius 75%, #14213d, #07111f);
 }
@@ -54,5 +53,5 @@
 
 .card-label.revealed {
     -fx-text-fill: #1a1a1a;
-    -fx-font-size: 34px;
+    -fx-font-size: 12px;
 }
