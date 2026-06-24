@@ -37,27 +37,90 @@ public class StartView extends StackPane {
         Label subtitle = new Label("Selecciona una categoría para comenzar la partida");
         subtitle.getStyleClass().add("start-subtitle");
 
-        HBox categories = new HBox(28,
-                createCategoryButton("Matemáticas", "[ START ]", "category-math", app, Deck.createMathDeck()),
-                createCategoryButton("Ciencia", "[ START ]", "category-science", app, Deck.createScienceDeck()),
-                createCategoryButton("English", "[ START ]", "category-english", app, Deck.createSEnglishDeck()));
+        HBox firstRow = new HBox(
+                28,
+                createCategoryButton(
+                        "Matemáticas",
+                        "[ START ]",
+                        "category-math",
+                        app,
+                        Deck.createMathDeck()
+                ),
+                createCategoryButton(
+                        "Ciencia",
+                        "[ START ]",
+                        "category-science",
+                        app,
+                        Deck.createScienceDeck()
+                ),
+                createCategoryButton(
+                        "English",
+                        "[ START ]",
+                        "category-english",
+                        app,
+                        Deck.createEnglishDeck()
+                )
+        );
+
+        firstRow.setAlignment(Pos.CENTER);
+
+        HBox secondRow = new HBox(
+                28,
+                createCategoryButton(
+                        "Cultura General",
+                        "[ START ]",
+                        "category-culture",
+                        app,
+                        Deck.createCultureDeck()
+                ),
+                createCategoryButton(
+                        "Historia",
+                        "[ START ]",
+                        "category-history",
+                        app,
+                        Deck.createHistoryDeck()
+                )
+        );
+
+        secondRow.setAlignment(Pos.CENTER);
+
+        VBox categories = new VBox(28, firstRow, secondRow);
         categories.setAlignment(Pos.CENTER);
         categories.getStyleClass().add("category-row");
 
-        HBox controls = new HBox(16,
+        HBox controls = new HBox(
+                16,
                 createControlButton("Puntuaciones", app::showScoreView),
-                createControlButton("Instrucciones",
-                        () -> showInfo("Instrucciones",
-                                "Elige una categoría para iniciar y luego encuentra todos los pares.")),
-                createControlButton("Salir", Platform::exit));
+                createControlButton(
+                        "Instrucciones",
+                        () -> showInfo(
+                                "Instrucciones",
+                                "Elige una categoría para iniciar y luego encuentra todos los pares."
+                        )
+                ),
+                createControlButton("Salir", Platform::exit)
+        );
+
         controls.setAlignment(Pos.CENTER);
         controls.getStyleClass().add("control-row");
 
-        content.getChildren().addAll(title, subtitle, categories, controls);
+        content.getChildren().addAll(
+                title,
+                subtitle,
+                categories,
+                controls
+        );
+
         getChildren().add(content);
     }
 
-    private Button createCategoryButton(String titleText, String hintText, String styleClass, Main app, List<Card> cards) {
+    private Button createCategoryButton(
+            String titleText,
+            String hintText,
+            String styleClass,
+            Main app,
+            List<Card> cards) {
+
         Label title = new Label(titleText);
         title.getStyleClass().add("category-title");
 
@@ -74,6 +137,7 @@ public class StartView extends StackPane {
         button.setMinSize(240, 260);
         button.setMaxSize(240, 260);
         button.setOnAction(e -> app.showGameView(cards));
+
         return button;
     }
 

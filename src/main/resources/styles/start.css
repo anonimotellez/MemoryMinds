@@ -96,3 +96,11 @@
     -fx-background-color: rgba(255, 255, 255, 0.12);
     -fx-border-color: rgba(255, 255, 255, 0.24);
 }
+
+.category-culture {
+    -fx-background-color: linear-gradient(to bottom right, #9b59b6, #6c3483);
+}
+
+.category-history {
+    -fx-background-color: linear-gradient(to bottom right, #e74c3c, #a93226);
+}
