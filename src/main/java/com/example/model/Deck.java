@@ -12,14 +12,14 @@ public final class Deck {
     public static List<Card> createMathDeck() {
         List<Card> cards = new ArrayList<>();
 
-        addPair(cards, "1", "2", "2");
-        addPair(cards, "2", "3", "3");
-        addPair(cards, "3", "4", "4");
-        addPair(cards, "4", "5", "5");
-        addPair(cards, "5", "6", "6");
-        addPair(cards, "6", "7", "7");
-        addPair(cards, "7", "8", "8");
-        addPair(cards, "8", "9", "9");
+        addPair(cards, "1", "√144", "12");
+        addPair(cards, "2", "8 × 8", "64");
+        addPair(cards, "3", "13 + 19", "32");
+        addPair(cards, "4", "81 ÷ 9", "9");
+        addPair(cards, "5", "17 × 2", "34");
+        addPair(cards, "6", "90 − 27", "63");
+        addPair(cards, "7", "11 × 7", "77");
+        addPair(cards, "8", "56 ÷ 7", "8");
 
         Collections.shuffle(cards);
         return cards;
@@ -44,14 +44,14 @@ public final class Deck {
     public static List<Card> createScienceDeck() {
         List<Card> cards = new ArrayList<>();
 
-        addPair(cards, "1", "Átomo", "Atom");
-        addPair(cards, "2", "Célula", "Cell");
-        addPair(cards, "3", "Planeta", "Planet");
-        addPair(cards, "4", "Energía", "Energy");
-        addPair(cards, "5", "Gravedad", "Gravity");
-        addPair(cards, "6", "Fotosíntesis", "Photosynthesis");
-        addPair(cards, "7", "Sistema Solar", "Solar System");
-        addPair(cards, "8", "Materia", "Matter");
+        addPair(cards, "1", "H ", "Hidrogeno");
+        addPair(cards, "2", "O", "Oxigeno");
+        addPair(cards, "3", "Na", "Sodio");
+        addPair(cards, "4", "K", "Potasio");
+        addPair(cards, "5", "Fe", "Hierro");
+        addPair(cards, "6", "Au", "Oro");
+        addPair(cards, "7", "Ag", "Plata");
+        addPair(cards, "8", "Ci", "Cloro");
 
         Collections.shuffle(cards);
         return cards;
